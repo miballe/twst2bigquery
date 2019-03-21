@@ -1,0 +1,12 @@
+1551917103970.json
+1551920451352.json
+1551929720540.json
+1551939180675.json
+1551942227259.json
+
+sed -i '1d;$d' ./1551917103970.json
+sed -i 's/.$//' ./1551917103970.json
+
+bq load --source_format=NEWLINE_DELIMITED_JSON gen2019dev.bulk001 ./data/1551917103970.json
+
+bq mk --table gen2019dev.bulk001 ./schema_twitter.json
